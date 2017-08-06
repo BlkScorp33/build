@@ -705,7 +705,9 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print(" | |__| |  __|__ \ (_) | | (_| | |_| | (_) | | | | ");
   script.Print(" |_____/ \___|___/\___/|_|\__,_|\__|_|\___/|_| |_| ");
   script.Print("                                                   ");
-  script.Print(" ***************** 7.1.x Nougat ****************** ");
+  script.Print(" **************** 7.1.x Nougat ***************** ");
+  script.Print("   ***************** Bacon ******************* ");
+  script.Print("     ***** Maintainer: BlackScorpion3 ****** ");
 
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
 
