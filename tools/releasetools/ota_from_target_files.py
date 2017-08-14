@@ -697,7 +697,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: %s" % CalculateFingerprint(
       oem_props, oem_dict, OPTIONS.info_dict))
-
+  
   script.Print("  _____                 _       _   _              ");
   script.Print(" |  __ \               | |     | | (_)             ");
   script.Print(" | |  | | ___ ___  ___ | | __ _| |_ _  ___  _ __   ");
@@ -705,10 +705,30 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print(" | |__| |  __|__ \ (_) | | (_| | |_| | (_) | | | | ");
   script.Print(" |_____/ \___|___/\___/|_|\__,_|\__|_|\___/|_| |_| ");
   script.Print("                                                   ");
-  script.Print(" **************** 7.1.x Nougat ***************** ");
-  script.Print("   ***************** Bacon ******************* ");
-  script.Print("     ***** Maintainer: BlackScorpion3 ****** ");
+#  script.Print(" **************** 7.1.x Nougat ***************** ");
+#  script.Print("   ***************** Bacon ******************* ");
+#  script.Print("     ***** Maintainer: BlackScorpion3 ****** ");
 
+  if GetBuildProp("ro.deso.version", OPTIONS.info_dict) is not None:
+  
+    version = GetBuildProp("ro.build.version.release", OPTIONS.info_dict)
+    maintainer = GetBuildProp("ro.deso.maintainer", OPTIONS.info_dict)
+    manufacturer = GetBuildProp("ro.product.manufacturer", OPTIONS.info_dict)
+    model = GetBuildProp("ro.product.device", OPTIONS.info_dict)
+    buildday = GetBuildProp("ro.build.date", OPTIONS.info_dict)
+    script.Print(" ******************* Rom Info ******************** "); 
+    script.Print(" Version: %s"%(version));
+    script.Print(""); 
+    script.Print(" Maintainer: %s"%(maintainer));
+    script.Print("");
+    script.Print(" Manufacturer: %s"%(manufacturer));
+    script.Print("");
+    script.Print(" Model: %s"%(model));
+    script.Print("");
+    script.Print(" Build date: %s"%(buildday));
+    script.Print("");
+    script.Print(" ************************************************* ");
+    
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
 
   CopyInstallTools(output_zip)
